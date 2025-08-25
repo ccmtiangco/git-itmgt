@@ -16,8 +16,7 @@ def shift_by_letter(letter, letter_shift):
 
 
 def vigenere_cipher(message, key):
-    def vigenere_cipher(message, key):
-        result = []
+    result = []
     key_length = len(key)
     key_index = 0
 
