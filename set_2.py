@@ -16,22 +16,21 @@ def shift_by_letter(letter, letter_shift):
 
 
 def vigenere_cipher(message, key):
-    result = []
-    key_index = 0
+    def vigenere_cipher(message, key):
+        result = []
     key_length = len(key)
+    key_index = 0
 
     for char in message:
+        shift = ord(key[key_index % key_length]) - ord('A')
+
         if char == " ":
-            result.append(" ")  # Keep spaces
+            result.append(" ") 
         else:
-            # Shift amount from key letter (A=0, B=1, ..., Z=25)
-            shift = ord(key[key_index % key_length]) - ord('A')
-            
-            # Apply shift to message character
             new_char = chr(((ord(char) - ord('A') + shift) % 26) + ord('A'))
             result.append(new_char)
-            
-            key_index += 1  # Only advance key when not a space
+
+        key_index += 1  
 
     return "".join(result)
 
