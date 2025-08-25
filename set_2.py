@@ -15,10 +15,25 @@ def shift_by_letter(letter, letter_shift):
     return letter
 
 
-def vigenere_cipher(message, key): #WRONG
-    return ''.join(result)
-   
+def vigenere_cipher(message, key):
+    result = []
+    key_index = 0
+    key_length = len(key)
 
+    for char in message:
+        if char == " ":
+            result.append(" ")  # Keep spaces
+        else:
+            # Shift amount from key letter (A=0, B=1, ..., Z=25)
+            shift = ord(key[key_index % key_length]) - ord('A')
+            
+            # Apply shift to message character
+            new_char = chr(((ord(char) - ord('A') + shift) % 26) + ord('A'))
+            result.append(new_char)
+            
+            key_index += 1  # Only advance key when not a space
+
+    return "".join(result)
 
 def scytale_cipher(message, shift):
     if shift <= 0:
@@ -34,6 +49,7 @@ def scytale_cipher(message, shift):
             if index < len(message):
                 ciphered_message.append(message[index])
     return ''.join(ciphered_message)
+
 
 def scytale_decipher(message, shift):
     length = len(message)
