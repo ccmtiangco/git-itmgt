@@ -16,23 +16,8 @@ def shift_by_letter(letter, letter_shift):
 
 
 def vigenere_cipher(message, key): #WRONG
-    result = []
-    key_index = 0
-    key_length = len(key)
-
-    for char in message:
-        if char == ' ':
-            result.append(' ')
-        else:
-            # Convert characters to 0–25 range
-            msg_val = ord(char) - ord('A')
-            key_val = ord(key[key_index % key_length]) - ord('A')
-            # Shift and wrap around
-            cipher_val = (msg_val + key_val) % 26
-            result.append(chr(cipher_val + ord('A')))
-            key_index += 1
-
     return ''.join(result)
+   
 
 
 def scytale_cipher(message, shift):
